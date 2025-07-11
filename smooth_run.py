@@ -447,7 +447,7 @@ if uploaded_file1 is not None and uploaded_file2 is not None:
                     if key != 'skin_color' and key != 'final_score':
                         st.write(f"{key.replace('_', ' ').title()}: {value:.2f}")
         st.subheader("Hott One ⚡")
-        st.image(winner_pil, caption=f"Image {'1' if s1 >= s2 else '2'} Wins!")
+        st.image(winner_pil, caption=f"Face {'1' if s1 >= s2 else '2'} Wins!")
     except Exception as e:
         st.error(f"An error occurred during processing: {str(e)}")
         import traceback

@@ -7,8 +7,8 @@ import tempfile
 import os
 import time
 
-st.info("📝 NOTE: The present comparison is only in the image, it's not in real life.")
-st.warning("⚠️ DISCLAIMER: Don't misuse this application.")
+st.info("📝 Note: This comparison is based only on the image, not real-life appearance.")
+st.warning("⚠️ DISCLAIMER: For image comparison only. Misuse is not allowed.")
 
 # Cache the MediaPipe Face Mesh to avoid reloading
 @st.cache_resource
@@ -24,7 +24,7 @@ def load_haar_cascades():
 
 # Set page title and description
 st.title("Know who's more Beautiful")
-st.write("Upload two images to compare and see which one scores higher!")
+st.write("Upload two face images to see which scores higher.")
 
 # Preload the detectors
 face_mesh = load_face_mesh()
@@ -395,10 +395,10 @@ def analyze_image(image_path, progress_callback=None):
 
 col1, col2 = st.columns(2)
 with col1:
-    st.subheader("Image 1")
+    st.subheader("Face 1")
     uploaded_file1 = st.file_uploader("Choose first image", type=['jpg', 'jpeg', 'png'], key="file1")
 with col2:
-    st.subheader("Image 2")
+    st.subheader("Face 2")
     uploaded_file2 = st.file_uploader("Choose second image", type=['jpg', 'jpeg', 'png'], key="file2")
 
 if uploaded_file1 is not None and uploaded_file2 is not None:
@@ -446,7 +446,7 @@ if uploaded_file1 is not None and uploaded_file2 is not None:
                 for key, value in metrics2.items():
                     if key != 'skin_color' and key != 'final_score':
                         st.write(f"{key.replace('_', ' ').title()}: {value:.2f}")
-        st.subheader("Winner")
+        st.subheader("Hott One ⚡")
         st.image(winner_pil, caption=f"Image {'1' if s1 >= s2 else '2'} Wins!")
     except Exception as e:
         st.error(f"An error occurred during processing: {str(e)}")
